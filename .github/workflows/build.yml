@@ -20,6 +20,9 @@ jobs:
   build:
     name: Compile main.tex
     runs-on: ubuntu-latest
+    # secrets is not available in a step-level `if`, so it is exposed through env.
+    env:
+      CROSS_REPO_TOKEN: ${{ secrets.CROSS_REPO_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -63,42 +66,42 @@ jobs:
           path: build/main.pdf
 
       - name: Skip publishing
-        if: ${{ failure() || secrets.CROSS_REPO_TOKEN == '' }}
+        if: ${{ failure() || env.CROSS_REPO_TOKEN == '' }}
         run: |
           echo "::notice::not publishing: build failed or secrets.CROSS_REPO_TOKEN is not set"
 
       - name: Open PR updating assets/jpdias.pdf
-        if: ${{ success() && secrets.CROSS_REPO_TOKEN != '' }}
+        if: ${{ success() && env.CROSS_REPO_TOKEN != '' }}
         env:
-          GH_TOKEN: ${{ secrets.CROSS_REPO_TOKEN }}
+          GH_TOKEN: ${{ env.CROSS_REPO_TOKEN }}
+          TARGET_URL: https://x-access-token:${{ env.CROSS_REPO_TOKEN }}@github.com/${{ env.TARGET_REPO }}.git
         run: |
           set -euo pipefail
+
+          # Clone the website repo so the PR contains only the PDF change.
+          git clone --quiet --depth 1 --single-branch --branch "$TARGET_BASE" "$TARGET_URL" site
+          cd site
 
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
-          mkdir -p "$(dirname "$TARGET_PDF")"
-          cp build/main.pdf "$TARGET_PDF"
+          cp ../build/main.pdf "$TARGET_PDF"
 
-          published=$(gh api "repos/$TARGET_REPO/contents/$TARGET_PDF?ref=$TARGET_BASE" \
-            --jq .sha 2>/dev/null || true)
-          if [ -n "$published" ] && [ "$published" = "$(git hash-object "$TARGET_PDF")" ]; then
-            echo "$TARGET_PDF matches $TARGET_BASE on $TARGET_REPO, nothing to publish."
+          if git diff --quiet -- "$TARGET_PDF"; then
+            echo "$TARGET_PDF is identical to $TARGET_BASE, nothing to publish."
             exit 0
           fi
 
-          git checkout -B "$PUBLISH_BRANCH"
+          git checkout -q -B "$PUBLISH_BRANCH"
           git add "$TARGET_PDF"
-          git commit -m "Update $TARGET_PDF from jpdias/cv (${GITHUB_SHA:0:8})"
-          git push --force "https://x-access-token:${GH_TOKEN}@github.com/${TARGET_REPO}.git" \
-            "HEAD:refs/heads/$PUBLISH_BRANCH"
+          git commit -q -m "Update $TARGET_PDF from jpdias/cv (${GITHUB_SHA:0:8})"
+          git push --quiet --force origin "HEAD:refs/heads/$PUBLISH_BRANCH"
 
           number=$(gh pr list --repo "$TARGET_REPO" --head "$PUBLISH_BRANCH" \
             --state open --json number --jq '.[0].number // empty')
 
           if [ -n "$number" ]; then
-            echo "PR #$number is already open, the branch push updated it:"
-            echo "https://github.com/$TARGET_REPO/pull/$number"
+            echo "PR #$number is already open: https://github.com/$TARGET_REPO/pull/$number"
           else
             gh pr create --repo "$TARGET_REPO" \
               --base "$TARGET_BASE" \
