@@ -1,0 +1,802 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage{fontspec} 
+
+% DOCUMENT LAYOUT
+\usepackage{geometry} 
+\geometry{a4paper, textwidth=5.5in, textheight=8.5in, marginparsep=7pt, marginparwidth=.6in}
+\setlength\parindent{0in}
+\usepackage{adforn}
+\newcommand{\FEUP}{Faculty of Engineering, University of Porto}
+
+% Identifying information
+\newcommand{\Title}{Curriculum Vit\ae}
+\newcommand{\FirstName}{João Pedro}
+\newcommand{\LastName}{Dias}
+\newcommand{\Initials}{J.P.}
+\newcommand{\MyName}{\FirstName\ \LastName}
+\newcommand{\Me}{\textbf{\LastName, \Initials}}  % For citations
+\newcommand{\Email}{jpmdias@fe.up.pt}
+\newcommand{\Website}{jpdias.me}
+\newcommand{\ORCID}{0000-0001-9066-6436}
+\newcommand{\Affiliation}{
+    \adforn{10} Kuehne+Nagel\\
+    \adforn{10} Department of Informatics Engineering
+    \\
+    \FEUP
+}
+\newcommand{\Address}{Porto, Portugal}
+
+\usepackage{marginnote}
+\newcommand{\amper{}}{\chardef\amper="E0BD }
+\newcommand{\years}[1]{\marginnote{\raggedleft\footnotesize #1}}
+\renewcommand*{\raggedleftmarginnote}{}
+\setlength{\marginparsep}{10pt}
+\reversemarginpar
+\usepackage[leftmargin=0pt,labelsep=10pt,itemsep=2pt,parsep=2pt]{etaremune}
+
+\usepackage[p,osf]{cochineal}
+\usepackage[type1]{cabin}
+\usepackage[cochineal,bigdelims,cmintegrals,vvarbb]{newtxmath}
+\usepackage[zerostyle=c,scaled=.94]{newtxtt}
+\usepackage[cal=boondoxo]{mathalfa}
+
+% Control the font size
+\usepackage{anyfontsize}
+\usepackage[maxbibnames=99,maxcitenames=99]{biblatex}
+%\bibliographystyle{plain}
+\bibliography{reference-personal}
+
+% Template variables for styling
+\newcommand{\TablePad}{\vspace{-0.4cm}}
+\newcommand{\SoftwareTitle}[1]{{\bfseries #1}}
+\newcommand{\TableTitle}[1]{{\fontsize{12pt}{0}\selectfont \itshape #1}}
+\newcommand{\Invited}{\textbf{[Invited]}}
+
+% For fancy and multipage tables
+\usepackage{tabularx}
+\usepackage{ltablex}
+\usepackage{environ}
+
+% Macros to add links
+\newcommand{\DOI}[1]{doi:\href{https://doi.org/#1}{#1}}
+\newcommand{\Preprint}[1]{[preprint: \href{https://doi.org/#1}{doi.org/#1}]}
+\newcommand{\Youtube}[1]{[recording: \href{https://youtu.be/#1}{youtu.be/#1}]}
+
+
+\newcommand{\Duration}[2]{\textsuperscript{#1}/\textsubscript{#2}}
+\newcommand{\Year}[1]{#1}
+%\newcommand{\Ongoing}{Today}  
+\newcommand{\Ongoing}{-}
+\newcommand{\Future}{future}
+\newcommand{\Review}{in review}
+\newcommand{\Accepted}{accepted}
+\newcommand{\OA}{{\bfseries [open access]}}
+
+
+% Define command to insert month name and year as date
+\usepackage{datetime}
+\newdateformat{monthyear}{\monthname[\THEMONTH], \THEYEAR}
+
+
+\setlength\parindent{0cm}
+
+% Increase the line spacing
+\renewcommand{\baselinestretch}{1.08}
+% and the spacing between rows in tables
+
+% Remove space between items in itemize and enumerate
+\usepackage{enumitem}
+\usepackage{multirow,bigdelim}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{array}
+\setlist{nosep}
+
+% Configure the font style for sections
+\usepackage{xcolor}
+\definecolor{awesome}{HTML}{96281B}
+\definecolor{ieee}{HTML}{00629b}
+\definecolor{acm}{HTML}{84cdf1}
+\definecolor{springer}{HTML}{ee7d11}
+\definecolor{elsevier}{HTML}{ff6c00}
+\definecolor{wos}{HTML}{5e33bf}
+\definecolor{scopus}{HTML}{ff6c00}
+\definecolor{dblp}{HTML}{ffd700}
+\definecolor{crossref}{HTML}{ef3340}
+\definecolor{mdpi}{HTML}{3b5578}
+% badger badger badger
+
+\usepackage[most]{tcolorbox}
+
+
+\newtcbox{\badge}[1][awesome]{
+  on line, 
+  arc=0pt,
+  colback=#1!80!black,
+  colframe=#1!80!black,
+  fontupper=\scshape\small\color{white},
+  boxrule=1pt, 
+  boxsep=0pt,
+  left=1pt,
+  right=1pt,
+  top=1pt,
+  bottom=1pt
+}
+
+\newcommand{\wos}{\badge[wos]{WoS}}
+\newcommand{\scopus}{\badge[scopus]{Scopus}}
+\newcommand{\crossref}{\badge[crossref]{CrossRef}}
+\newcommand{\dblp}{\badge[dblp]{DBLP}}
+
+\newcommand{\ieee}{\badge[ieee]{IEEE}}
+\newcommand{\acm}{\badge[acm]{ACM}}
+\newcommand{\mdpi}{\badge[mdpi]{MDPI}}
+\newcommand{\springer}{\badge[springer]{Springer}}
+\newcommand{\elsevier}{\badge[elsevier]{Elsevier}}
+% Set the spacing for sections
+% HEADINGS
+\usepackage{sectsty} 
+\usepackage[normalem]{ulem} 
+\sectionfont{\color{awesome}\mdseries\upshape\Large}
+\subsectionfont{\color{awesome}\mdseries\scshape\normalsize} 
+\subsubsectionfont{\color{awesome}\mdseries\upshape\large} 
+
+
+% Set fancy headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\chead{
+    \fontsize{8pt}{10pt}\selectfont
+    \MyName
+    \hspace{0.2cm}  \quad\adforn{24}\quad \hspace{0.2cm}
+    \Title
+    \hspace{0.2cm}  \quad\adforn{52}\quad  \hspace{0.2cm}
+    \monthyear\today
+}
+\rhead{}
+\usepackage{lastpage}
+\cfoot{\fontsize{8pt}{0}\selectfont Page \thepage\ of \pageref*{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancypagestyle{firststyle}
+{
+   \fancyhf{}
+   \cfoot{\fontsize{8pt}{0}\selectfont Page \thepage\ of \pageref*{LastPage}}
+}
+
+
+% Metadata for the PDF output and control of hyperlinks
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{
+    pdftitle={\MyName\ - \Title},
+    pdfauthor={\MyName},
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=black,
+    urlcolor=awesome
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sloppy
+
+\begin{document}
+
+% No header for the first page
+\thispagestyle{firststyle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HEADER
+{\color{awesome}\fontsize{24pt}{0}\selectfont\MyName \hfill \adforn{74}}\\
+
+\begin{minipage}[t]{0.595\textwidth}
+	\Affiliation
+	\\
+	\Address
+\end{minipage}
+\begin{minipage}[t]{0.4\textwidth}
+	\begin{flushright}
+		Last updated: \monthyear\today
+		\\
+		ORCID: \href{https://orcid.org/\ORCID}{\ORCID}
+		\\
+		email: \href{mailto:\Email}{\Email}
+		\\
+		website: \href{https://\Website}{\Website}
+	\end{flushright}
+\end{minipage}
+%\vspace{0.2cm}
+\begin{center}
+	\color{awesome} 
+	\vspace{-0.85cm}
+\end{center}
+
+\paragraph{Summary} João Pedro Dias is part researcher on the thin line between hardware and software, and part Software Engineer. He has a BSc+MSc in Informatics and Computing Engineering by the Faculty of Engineering, University of Porto (FEUP). He earned his Ph.D. in Informatics Engineering from FEUP in 2022, while receiving a grant from the FCT. He maintains a Software Engineer position as a day-to-day job. Since 2017, he has been an Invited Assistant Professor at FEUP, where he teaches courses in Software Engineering, Operating Systems, among others. He has (co-)supervised +10 MSc dissertations and contributed to two public-funded projects at LIACC and INESC TEC. His research focuses on Internet-of-Things systems, software engineering, security and privacy, and his work has been published in several top-tier conferences and journals (h-index 18, i10-index 23). In his free time, he enjoys participating in Capture The Flag competitions, experimenting with Software-defined Radio, building web applications, reverse-engineering hardware, and photographing while wandering in nature.
+\vspace{-1.1em}
+%João Pedro Dias has a \textsc{BSc}+\textsc{MSc} in \textsc{Informatics and Computing Engineering} by the \textsc{Faculty of Engineering, University of Porto} (\textsc{FEUP}). He has a \textsc{Ph.D.} in \textsc{Informatics Engineering} by the same university circa 2022. He is an \textsc{Invited Assistant Professor} at \textsc{FEUP}, lecturing, since 2017, 8 different courses ranging from \textsc{Software Engineering} to \textsc{Operating Systems}. He has participate in 5$+$ MSc dissertations supervision. He previously worked as a researcher at \textsc{LIACC} and \textsc{INESC TEC} and he is now \textsc{Software Engineering Specialist} at \textsc{BUILT CoLAB}. He works in the area of Software Engineering, with a special interest in Design Patterns, Internet-of-Things, Security and Privacy, counting with 30$+$ published and indexed papers. In his leisure time, he can be found participating in Capture The Flag competitions, messing around with Software-defined Radio, doing web development, learning how to reverse engineer hardware and photographing while wandering in nature. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Professional Appointments}
+
+\years{2023---}
+\textbf{Software Engineer}, Kuehne$+$Nagel\\
+Porto IT Tech Hub, Porto, Portugal
+\\
+\years{2022---}
+\textbf{Invited Assistant Professor}, Department of Informatics Engineering (DEI)
+\newline
+\FEUP
+\\
+\years{2021---2023}
+\textbf{Software Engineering Specialist}, BUILT CoLAB \\
+Collaborative Laboratory for the Built Environment of the Future, \Address{}
+\\
+\years{2017--2022}
+\textbf{Invited Assistant Lecturer}, Department of Informatics Engineering (DEI)
+\newline
+\FEUP
+\\
+\years{2017--2021}
+\textbf{Researcher}, Centre for Information Systems and Computer Graphics (CSIG)
+\newline
+Institute for Systems and Computer Engineering, Technology and Science (INESC TEC)
+\newline
+\Address{}
+\\
+\years{2016--2017}
+\textbf{Researcher}, LIACC --- Artificial Intelligence and Computer Science Laboratory 
+\newline
+\FEUP
+\\
+\years{2015 (4 \footnotesize{mo.})} 
+\textbf{Summer Engineering Intern}, ShiftForward, S.A. (\textit{a.k.a.} Velocidi, Inc., acquired by Kevel)\\
+\Address{}
+\\
+\years{2014 (4 \footnotesize{mo.})}  
+\textbf{IT Department Internship}, Centro Hospitalar do Tâmega e Sousa, E.P.E.
+\\
+Penafiel, \Address{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Education}
+
+\years{2016--2022}
+\textbf{Doctoral Program in Informatics Engineering --- ProDEI (PhD)}
+\newline \FEUP,  \textit{Unanimously Approved with Distinction (Cum Laude)}.
+%\newline Supervision of Hugo Sereno Ferreira, PhD, and Co-Supervision of João Pascoal Faria, PhD 
+\\
+\years{2011--2016}  
+\textbf{Integrated Masters in Informatics and Computing Engineering --- MIEIC (BSc + MSc)}
+\newline \FEUP, \textit{GPA: 15 out of 20}.
+\\
+\years{2008--2011}
+\textbf{Elementary School --- Sciences and Technologies}
+\newline Externato de Vila Meã, \Address{}, \textit{GPA: 17 out of 20}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Teaching}
+
+\textbf{Integrated Master in Informatics and Computing Engineering (\textsc{MIEIC}) :: \textsc{FEUP} ::  5 years\footnote{MIEIC last edition was 20/21, then it became L.EIC + M.EIC.}}
+\begin{table}[H]
+	\renewcommand{\arraystretch}{0.25}
+	\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} ccccccc@{}}
+		
+		&                      &                      &  & \footnotesize{$^{17} / _{18}$} & \footnotesize{$^{18} / _{19}$} & \footnotesize{$^{19} / _{20}$}   & \footnotesize{$^{20} / _{21}$} \\ \midrule
+		&                      &     Year                 & \small{ECTS}                & \multicolumn{4}{c}{Classes}         \\ \midrule \addlinespace[0.2cm]
+		Object Oriented Programming Lab & \small{LPOO}                 & 2                    & 6                    & -                    & 1  & -   & -    \\\addlinespace[0.3cm]
+		Operating Systems                      & \small{SOPE}                 & 2                    & 6                    & 2               & 1         & 2   & 2   \\\addlinespace[0.3cm]
+		Software Engineering       & \small{ESOF}                 & 3                    & 6                  & -                    & -    & -          & 1 \\\addlinespace[0.3cm]
+		Software Development Lab       & \small{LDSO}                 & 4                    & 7.5                  & -                    & 1    & -          & -   \\\addlinespace[0.3cm]
+		Software Systems Architecture          & \small{ASSO}                 & 4                    & 6                    & -                    & 1    & -      & -   \\\addlinespace[0.2cm]\bottomrule
+	\end{tabular*}
+\end{table}
+
+\textbf{Bachelor in Informatics and Computing Engineering (\textsc{L.EIC}) :: \textsc{FEUP} :: 3 years}
+\begin{table}[H]
+	\renewcommand{\arraystretch}{0.5}
+	\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} cccccc@{}}
+		
+		&                      &                      &  & \footnotesize{$^{21} / _{22}$} & \footnotesize{$^{22} / _{23}$} & \footnotesize{$^{23} / _{24}$}\\ \midrule
+		&                      &     Year                 & \small{ECTS}                & \multicolumn{2}{c}{Classes}    &   -  \\ \midrule \addlinespace[0.2cm]
+		Web Languages and Technologies & \small{LTW}                 & 2                    & 6                    & 2 & 2 & 2\\\addlinespace[0.3cm]
+		Operating Systems                      & \small{SO}                 & 2                    & 6                    & 2 &   - & -  \\\addlinespace[0.2cm]\bottomrule
+	\end{tabular*}
+\end{table}
+
+\textbf{Master in Informatics and Computing Engineering (\textsc{M.EIC}) :: \textsc{FEUP} :: 2 years}
+\begin{table}[H]
+	\renewcommand{\arraystretch}{0.5}
+	\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} ccccc@{}}
+		
+		&                      &                      &  & \footnotesize{$^{22} / _{23}$} & \footnotesize{$^{23} / _{24}$}\\ \midrule
+		&                      &     Year                 & \small{ECTS}                & \multicolumn{1}{c}{Classes}   &      \\ \midrule \addlinespace[0.2cm]
+		Large Scale Software Development                     & \small{DS}                 & 2                    & 6                    & 2    & 2   \\\addlinespace[0.2cm]\bottomrule
+	\end{tabular*}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Publications}
+
+Since 2017 I have (co-)authored \textbf{25 articles in conferences with scientific referee} and \textbf{7 articles in refereed periodics}. In total, these \textbf{31 publications} have attracted over \textbf{633 citations}, resulting in an \textbf{h-index of 17} and \textbf{i10-index of 23}\footnote{Citations and indexes were obtained by using Google Scholar, \textsc{id: \href{https://scholar.google.com/citations?user=sQ2vKI0AAAAJ}{sQ2vKI0AAAAJ}}, on 31 July, 2023}. Indexation of the articles in Scopus, Web Of Science (WoS), DBLP, and CrossRef databases is represented using badges.
+
+\subsection*{Peer-Reviewed Journals}
+
+\begin{etaremune}
+	\renewcommand\labelenumi{\footnotesize\theenumi .}
+    \item \fullcite{RIBEIRO2024112081} \scopus \wos \dblp \crossref
+	\item \fullcite{Sosym2022} \scopus \wos \dblp \crossref
+	\item \fullcite{DiasIoT2022} \scopus \wos \dblp \crossref
+	\item \fullcite{AccessReis2021} \scopus \wos \dblp \crossref
+	\item \fullcite{lago2020journal} \scopus \wos \dblp \crossref
+	\item \fullcite{ccis19a} \scopus \wos \dblp \crossref
+	\item \fullcite{ccis19b} \scopus \wos \dblp \crossref
+	\item \fullcite{jias18} \wos \dblp
+\end{etaremune}
+
+\subsection*{Peer-Reviewed Conference Proceedings}
+
+\begin{etaremune}
+	\renewcommand\labelenumi{\footnotesize\theenumi .}
+    \item \fullcite{verdi2023}
+	\item \fullcite{icse2022} \scopus \wos \dblp 
+	\item \fullcite{icse2021} \scopus \wos \dblp \crossref
+	\item \fullcite{DannyUserStudy21} \dblp \crossref
+	\item \fullcite{MargaridaSurvey21} \dblp \crossref
+	\item \fullcite{Margarida2020} \wos \dblp \crossref
+	\item \fullcite{europlop2020} \scopus \dblp \crossref
+	\item \fullcite{DiogoTorres2020} \scopus \wos \dblp \crossref
+	\item \fullcite{Piedade2020} \scopus \dblp \crossref
+	\item \fullcite{selfheal20} \scopus \dblp \crossref
+	\item \fullcite{Lago2020} \scopus \dblp \crossref
+	\item \fullcite{europlop19} \scopus \wos \dblp \crossref
+	\item \fullcite{Aguiar2019} \scopus \dblp \crossref
+	\item \fullcite{enasePedro19} \scopus \wos \dblp \crossref
+	\item \fullcite{enaseGil19} \scopus \wos \dblp \crossref
+	\item \fullcite{Pinto18} \scopus \wos \dblp \crossref
+	\item \fullcite{DiasICST18} \scopus \wos \dblp \crossref
+	\item \fullcite{SEDES2018} \scopus \wos \dblp \crossref
+	\item \fullcite{ISC22018} \scopus \dblp \crossref
+	\item \fullcite{IAS2018health} \scopus \dblp \crossref
+	\item \fullcite{pinto2018blockchainbased} \scopus \dblp \crossref
+	\item \fullcite{Ramadas2017}
+	\item \fullcite{Dias2017} \scopus \dblp \crossref
+	\item \fullcite{Duarte2017} \scopus \dblp \crossref
+	\item \fullcite{Diasecommerce2017} \scopus \wos \dblp \crossref
+\end{etaremune}
+
+\subsection*{Informal Publications \textit{\&} Others}
+
+\begin{etaremune}
+	\renewcommand\labelenumi{\footnotesize\theenumi .}
+	\item \fullcite{xp2020survey}
+	\item \fullcite{ijup18}
+	\item \fullcite{ijup17}
+	\item \fullcite{ijup16}
+\end{etaremune}
+
+\subsection*{Preprints}
+
+\begin{etaremune}
+	\renewcommand\labelenumi{\footnotesize\theenumi .}
+	\item  \fullcite{DBLP:journals/corr/abs-2009-05828}
+\end{etaremune}
+
+
+\subsection*{Dissertations}
+
+
+\years{2022} \fullcite{feupphd}
+\\[0.42em]
+\years{2016} \fullcite{feupmsc}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Educational Activities}
+
+Since 2016, I have been (co-)supervisor of +\textbf{10 M.Sc. dissertations} and of \textbf{6 B.Sc. capstone projects}. Most of my (co-)supervisions consist of students of the Informatics and Computation Engineering degree by \FEUP, with several collaborations with colleagues as main or co-supervisor. Most of these supervisions are pursued in an academic context (\textit{i.e.}, within the institution that confers the degree). Others took place at companies/external institutions, including: Critical Manufacturing, Smartex.ai, DevScope, Kuehne+Nagel, and BUILT CoLAB.
+
+\subsection*{Master's Dissertation Supervisions}
+
+\begin{etaremune}
+	\renewcommand\labelenumi{\footnotesize\theenumi .}
+    \item \textit{Incremental Load Test on Event-Driven Architectures with Structured Data} by Ângela Coelho (2023--2024).
+	Co-supervisor: António Sernadas, MSc (Kuehne-Nagel). \FEUP.
+    \item \textit{AsyncAPI-First Design for Event-Driven Architectures: Improve Developer Experience} by José Silva (2023--2024).
+	Co-supervisor: António Sernadas, MSc (Kuehne-Nagel). \FEUP.
+    \item \textit{Adopting Continuous Deployment of WebAssembly Applications in Internet-of-Things Systems} by Joel Fernandes (2023--2024).
+	Co-supervisor: André Restivo, PhD. \FEUP.
+	\item \textit{Leveraging Context-awareness in IoT Systems: An Approach with Voice Assistants} by Daniel Gonçalves (2022--2023).
+	Co-supervisor: André Restivo, PhD. \FEUP.
+	
+	\item \textit{Adopting Containers in Microcontrollers for the IoT} by Xavier Pisco (2022--2023).
+	Co-supervisor: André Restivo, PhD. \FEUP.
+
+	\item \textit{Privacy-aware Rule Conflict Prediction in Home Automation} by Pedro Ponte (2022--2023).
+	Main-supervisor: André Restivo, PhD. \FEUP.
+
+	\item \textit{Micro-containerization in Microcontrollers for the IoT} by Eduardo Ribeiro (2021--2022). \textit{handle}: \href{http://hdl.handle.net/10216/142728}{10216/142728}.
+	Co-supervisor: Hugo Sereno Ferreira, PhD. \FEUP.
+	
+	\item \textit{MQTT Chaos Engineering for Self-Healing IoT Systems} by Miguel Duarte (2020--2021), \textit{ref.}: \href{https://hdl.handle.net/10216/135470}{10216/135470}. Main supervisor: André Restivo, PhD. \FEUP.
+	
+	\item \textit{Visual Programming Language for Orchestration with Docker} by Bruno Piedade (2019--2020), \textit{ref.}: \href{http://hdl.handle.net/10216/128974}{10216/128974}. Main supervisor: Filipe Correia, PhD. \FEUP.
+	
+	\item \textit{Implementing a Multi-Approach Debugging of Industrial IoT Workflows} by Andreia Rodrigues (2018--2019), \textit{ref.}: \href{http://hdl.handle.net/10216/122773}{10216/122773}. Main supervisor: Hugo Sereno Ferreira, PhD; Collaboration with \href{https://www.criticalmanufacturing.com/}{Critical Manufacturing}. \FEUP.
+	
+	\item \textit{Dynamic Allocation of Serverless Functions in IoT Environments} by Duarte Pinto (2017--2018), \textit{ref.}: \href{http://hdl.handle.net/10216/114149}{10216/114149}. Main supervisor: Hugo Sereno Ferreira, PhD. \FEUP.
+	
+	\item \textit{Blockchain as a PKI for Ownership Control of IoT Devices} by Guilherme Pinto (2017--2018), \textit{ref.}: \href{http://hdl.handle.net/10216/114144}{10216/114144}. Main supervisor: Hugo Sereno Ferreira, PhD. \FEUP.
+	
+	\item \textit{Interoperability In Software Applications For Smart Cities: Towards A Reference Architecture} by José Pedro Pinto (2016--2017), \textit{ref.}:  \href{http://hdl.handle.net/10216/107529}{10216/107529}. Main supervisor: Rosaldo Rossetti, PhD. \FEUP.
+\end{etaremune}
+
+\subsection*{Bachelor's Capstone Project Supervisions}
+
+\begin{etaremune}
+	\renewcommand\labelenumi{\footnotesize\theenumi .}
+ \item \textit{IoT-based Real-Time Helpdesk Occupation Status V2.0}. Co-supervisor: João Paiva Cardoso. André Costa, Fábio Sá, Lourenço Gonçalves, Marcos Pinto. \textit{Group Project} (2022--2023). \FEUP.
+	\item \textit{Hardware Simulation to Assist Software Development for the Textile Industry}. Sérgio Estêvão, \textit{Individual Internship} at \href{https://www.smartex.ai/}{Smartex.ai} (2021--2022). \FEUP. 
+	\item \textit{Research Project Management as Scrum Master in the DevScope Academy}. João Baltazar, \textit{Individual Internship} at \href{https://www.devscope.net/}{DevScope} (2021--2022). \FEUP. 
+	
+	\item \textit{Multi-purpose License Manager}. Daniel Gonçalves, Isla Cassamo, André Malheiro, \textit{Group Project} in collaboration with \href{https://www.builtcolab.pt/}{BUILT CoLAB} (2021--2022). \FEUP.
+	
+	\item \textit{IoT-based Real-Time Helpdesk Occupation Status}. Main supervisor: João Paiva Cardoso, PhD. João Pinho, Pedro Santos, Tiago Gonçalves, Diogo Vale, \textit{Group Project} (2021--2022). \FEUP.
+	
+	\item \textit{IoT-enhanced HMI --- Embedded Mouse}. Main supervisor: Pedro Diniz, PhD. Bruno Mendes, José Costa, David Preda, Fernando Rego, \textit{Group Project} (2021--2022). \FEUP.
+	
+	\item \textit{Ubiquitous Sensing --- Sensing, Storing and Processing Plant Sensor Data}. Main supervisor: Pedro Diniz, PhD. Nuno Alves, Miguel Amorim, Mário Travassos, Ricardo Ferreira, \textit{Group Project} (2021--2022). \FEUP.
+\end{etaremune}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Invited Talks, Presentations \textit{\&} Workshops}
+
+Slides and abstracts for most of the presentations are available at
+\href{https://jpdias.me/talks}{jpdias.me/talks}.
+\\
+
+\years{2024}  
+\fullcite{devopsKN24}
+\\[0.42em]
+\years{2023}  
+\fullcite{apidays23}
+\\[0.42em]
+\fullcite{ptpc23}
+\\[0.42em] 
+\fullcite{isep23}
+\\[0.42em]
+\years{2021}  
+\fullcite{sinf2021}
+\\[0.42em] 
+\fullcite{update2021}
+\\[0.42em]
+\years{2020}  
+\fullcite{codeweek20}
+\\[0.42em]
+\years{2019}  
+\fullcite{oposec19}
+\\[0.42em]
+\fullcite{pixelscamp3}
+\\[0.42em]
+\years{2017}  
+\fullcite{pixelscamp2}
+\\[0.42em]
+\years{2016}  
+%\Invited{}
+\fullcite{oposec16}
+\\[0.42em]
+\years{2015}  
+%\Invited{}
+\fullcite{feup15}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Academic Service \textit{\&} Affiliations}
+
+
+Since 2017, I have participated as a reviewer\footnote{All reviews are verified on Web of Science: \href{https://www.webofscience.com/wos/author/record/O-4128-2018}{wos/O-4128-2018}.} in \textbf{7 periodics} and \textbf{7 international
+	conferences}. I also have been member of \textbf{11 committees} of international and national conferences, and have been a volunteer at 3 different scientific events.
+
+\subsection*{Reviewer for International Conferences}
+
+\begin{itemize}[leftmargin=0pt,labelsep=10pt,itemsep=1.4pt,parsep=2pt]
+\small
+    \item \ieee{} International Smart Cities Conference 2021 (IEEE ISC2 2021) \small{(1$\times$ Full Paper)}
+	\item 2\textsuperscript{nd} International Conference on Artificial Intelligence, Information Processing and Cloud Computing (AIIPCC 2021) \small{(1$\times$ Full Paper)}
+	\item 4\textsuperscript{th} International Conference on Computer Science and Application Engineering (CSAE 2020) \small{(1$\times$ Full Paper)}
+	\item \ieee{} International Symposium on Personal, Indoor and Mobile Radio Communications (IEEE PIMRC 2019) \small{(1$\times$ Full Paper)}
+	\item \ieee{} Intelligent Vehicles Symposium (IEEE IV 2017) \small{(1$\times$ Full Paper)}
+	\item \ieee{} Summer School on Smart Cities (IEEE S3C 2017) \small{(2$\times$ Full Papers, 1$\times$ Short Paper)}
+	\item \ieee{} 20\textsuperscript{th} International Conference on Intelligent Transportation Systems (IEEE ITSC 2017) \small{(2$\times$ Full Paper)}
+\end{itemize}
+
+\subsection*{Reviewer for International Scientific Journals}
+
+\begin{itemize}[leftmargin=0pt,labelsep=10pt,itemsep=1.4pt,parsep=2pt]
+\small{
+    \item \acm{} Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies (1$\times$)
+    \item \ieee{} Access (1$\times$)
+    \item \ieee{} Intenert of Things Journal (1$\times$)
+    \item \elsevier{} Journal of Information Security and Applications (4$\times$)
+    \item \springer{} Soft Computing (1$\times$)
+	\item \springer{} Journal of Grid Computing (1$\times$)
+    \item \badge{Taylor and Francis} Journal of Experimental \& Theoretical Artificial Intelligence (1$\times$)
+    \item \badge{Taylor and Francis} International Journal of Human-Computer Interaction (1$\times$)
+	\item \mdpi{} Journal of Cybersecurity and Privacy (1$\times$)
+    \item \mdpi{} Electronics (1$\times$)
+ 	\item \mdpi{} Symmetry (1$\times$)
+	\item \badge[blue]{Oxford} Interacting with Computers: Interdisciplinary Journal of Human-Computer Interaction (1$\times$)
+	\item \badge[mdpi]{ITB} Journal of ICT Research and Applications (1$\times$)
+	}
+\end{itemize}
+
+\subsection*{Member of Committees}
+
+\years{2023} 
+\textbf{Program Committee Member}, ICSOFT --- International Conference on Software Technologies, 18\textsuperscript{th} Edition\\[0.42em]
+\textbf{Organizing Committee}, 5\textsuperscript{th} International Workshop on Software Engineering Research \textit{\&} Practices for the Internet of Things (SERP4IoT 2023), co-located with the 44\textsuperscript{th} ACM/IEEE International Conference on Software Engineering (ICSE 2023)
+\\[0.42em]
+\years{2022} \textbf{Publicity Chair}, 4\textsuperscript{th} International Workshop on Software Engineering Research \textit{\&} Practices for the Internet of Things (SERP4IoT 2022), co-located with the 44\textsuperscript{th} ACM/IEEE International Conference on Software Engineering (ICSE 2022)
+\\[0.42em]
+\years{2019} \textbf{Track Co-Chair}, Symposium on Informatics Engineering, part of the 3\textsuperscript{rd} Doctoral Congress Engineering (DCE19), \FEUP
+\\[0.42em]
+\textbf{Program Committee Member}, Talk a Bit --- Student Organized Tech Conference, 7\textsuperscript{th} Edition
+\\[0.42em]
+\years{2018} \textbf{Makerspace Chair}, 19\textsuperscript{th} International Conference on Agile Software Development (XP 2018)
+\\[0.42em] 
+\textbf{Conference Organization Chair}, 13\textsuperscript{th} Doctoral Symposium in Informatics Engineering (DSIE'18)
+\\[0.42em] 
+\textbf{Advisor Board Member}, Talk a Bit --- Student Organized Tech Conference, 6\textsuperscript{th} Edition
+\\[0.42em]
+\years{2017} \textbf{Program Committee Member}, 2017 IEEE 1\textsuperscript{st} Summer School on Smart Cities (IEEE S3C 2017)
+\\[0.42em]
+\textbf{Web Communication Co-chai}r, The Second ACM International Workshop on Smart, Autonomous, and Connected Vehicular Systems and Services (ACM CarSys 2017), part of the The 23\textsuperscript{rd} Annual International Conference on Mobile Computing and Networking (MobiCom 2017)
+\\[0.42em]
+\textbf{Advisor Board Member}, Talk a Bit --- Student Organized Tech Conference, 5\textsuperscript{th} Edition (2017)
+\\[0.42em]
+\years{2016} \textbf{Conference Chair}, Talk a Bit --- Student Organized Tech Conference, 4\textsuperscript{th} Edition (2016)
+\\[0.42em]
+\textbf{Web Communication Co-chair}, 2016 IEEE 19\textsuperscript{th} International Conference on Intelligent Transportation Systems (ITSC 2016)
+
+
+\subsection*{Volunteer Activities}
+
+
+\years{2017} 
+\textbf{Student Volunteer (Media Coverage)}, 18\textsuperscript{th} EPIA Conference on Artificial Intelligence (EPIA 2017), Porto, Portugal
+\\[0.42em]
+\years{2014} 
+\textbf{Student Volunteer}, Inter-University Programming Marathon (MIUP 2014), \Address{}
+\\[0.42em]
+\textbf{Student Volunteer}, INForum - Symposion on Informatics (INForum 2014), \Address{}
+
+
+\subsection*{Affiliations}
+
+
+\years{2017--} \textbf{Software Engineering Group} at the Department of Informatics Engineering, Faculty of Engineering, University of Porto.
+\\[0.42em]
+\years{2017--} \textbf{Institute for Systems and Technologies of Information, Control and Communication} (INSTICC).
+\\[0.42em]
+\years{2019--2020} \textbf{Association for Computing Machinery} (ACM), Student Membership.
+\\[0.42em]
+\years{2013--2018}  \textbf{Institute of Electrical and Electronics Engineers} (IEEE), Student Membership as part of the University of Porto Student Branch (IEEE UP SB).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Grants, Honors \textit{\&} Awards}
+
+\subsection*{Grants}
+
+%\textbf{PhD Scholarship}\marginpar[\Duration{2019}{2021}]{} , by FCT --- Fundação para a Ciência e a Tecnologia (Portuguese Foundation for Science and Technology), \textit{ref.} SFRH/BD/144612/2019, 2 years. 
+\years{2019--2021} 
+\textbf{PhD Scholarship}, by FCT --- Fundação para a Ciência e a Tecnologia (Portuguese Foundation for Science and Technology), \textit{ref.} SFRH/BD/144612/2019, 2 years.
+\\[0.42em]
+\years{2017--2018} 
+\textbf{NanoSTIMA --- Macro-to-Nano Human Sensing: Towards Integrated Multimodal Health Monitoring and Analytics} at INESC TEC, \textit{ref.} NORTE-01-0145-FEDER-000016, 12 months, \href{http://nanostima.inesctec.pt/}{nanostima.inesctec.pt}
+\\[0.42em]
+\years{2016--2017} 
+\textbf{PEDDIR DEMO: Weigth in Motion and Wheels Defect Detection (Sistema de Pesagem Dinâmica e Deteção de Irregularidades dos Rodados)} at LIACC, \textit{ref.} NORTE-01-0247-FEDER-006397, 6 months, \href{http://peddir.eu/}{peddir.eu}
+
+
+
+\subsection*{International Honors \textit{\&} Awards}
+
+
+\years{2017}  
+\textbf{427\textsuperscript{th} \small{(of 3350)}}, IEEEXtreme --- 24h Programming Competition 11.0, 
+\href{http://sites.ieee.org/xtreme/}{ieee.org/xtreme} (Online)
+\\[0.42em]
+\textbf{847\textsuperscript{th} \small{(of 2815)}}, Google Hash Code 2017, 
+\href{http://hashcode.withgoogle.com}{hashcode.withgoogle.com} (Online)
+\\[0.42em]
+\years{2015}  
+\textbf{189\textsuperscript{th} \small{(of 2477)}}, IEEEXtreme --- 24h Programming Competition 9.0, 
+\href{http://sites.ieee.org/xtreme/}{ieee.org/xtreme} (Online)
+\\[0.42em]
+\years{2014} 
+\textbf{Honorable Mention}, IEEEmadC --- IEEE Mobile Application Dev. Contest, \href{http://ieeemadc.org}{ieeemadc.org} (Online)
+\\[0.42em]
+\years{2013}  
+\textbf{126\textsuperscript{th} \small{(of 2570)}}, IEEEXtreme --- 24h Programming Competition 7.0, 
+\href{http://sites.ieee.org/xtreme/}{ieee.org/xtreme} (Online)
+\\[0.42em]
+\textbf{2\textsuperscript{nd} Place} at European Final (1\textsuperscript{st} at Local and National rounds), European BEST Engineering Competition, \href{http://ebec.best.eu.org}{ebec.best.eu.org}, Warsaw, Poland.
+
+
+\subsection*{Domestic Honors \textit{\&} Awards}
+\years{2022} 
+\textbf{11\textsuperscript{th} \small{(of 109 Participants)}},  Portuguese Cybersecurity Competition by hackrocks, \href{https://cyberpt.hackrocks.com/}{cyberpt.hackrocks.com}. Online (Portugal).
+\\[0.42em]
+\years{2021} 
+\textbf{7\textsuperscript{th} \small{(of 372 Teams)}}, Portuguese Stage of the 2021 MetaRed CTF Championship by RCTS-FCCN (FCT Portugal) and Metared, \href{https://cert.rcts.pt/}{cert.rcts.pt}. Online (Portugal).
+\\[0.42em]
+\years{2020}  
+\textbf{6\textsuperscript{th} \small{(of 51 Teams)}}, CIBER PERSEU 2020 Portguese Army Exercise --- Capture The Flag component by \href{https://www.ihacklabs.com/}{iHackLabs} \textit{\&} \href{http://exercito.pt/}{exercito.pt}. Online (Portugal).
+\\[0.42em]
+\textbf{9\textsuperscript{th} \small{(of 209 Teams)}}, Portuguese Stage of the 2020 MetaRed CTF Championship by RCTS-FCCN (FCT Portugal) and Metared, \href{https://cert.rcts.pt/}{cert.rcts.pt}. Online (Portugal).
+\\[0.42em]
+\textbf{3\textsuperscript{th} \small{(of 6 Teams)}}, Capture The Flag by BSidesPorto, \href{https://bsidesporto.com/}{bsidesporto.com}. Online (Portugal).
+\\[0.42em]
+\years{2018}  
+\textbf{6\textsuperscript{th} \small{(of 31 Participants)}}, CIBER PERSEU 2018 Portguese Army Exercise --- Capture The Flag component by \href{https://www.diateam.net}{\texttt{diateam}} \textit{\&} \href{http://exercito.pt/}{exercito.pt}. Portuguese Military Academy, Lisbon, Portugal.
+\\[0.42em]
+\years{2011} 
+\textbf{1\textsuperscript{st} Place}, PmatE Mat12 --- Mathematics Competition, \href{http://pmate.ua.pt/}{pmate.ua.pt}. University of Aveiro, Portugal.
+\\[0.42em]
+\years{2009}  
+\textbf{2\textsuperscript{nd} Place}, PmatE Fis12 --- Physics Competition, 
+\href{http://pmate.ua.pt/}{pmate.ua.pt}. University of Aveiro, Portugal.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Additional Training}
+
+\years{2024}  
+\textbf{Terraform Associate (003)} by HashiCorp Certified (Online with Proctored Exam)
+\\[0.42em]
+\years{2022}  
+\textbf{Redis Certified Developer}, with completion of the modules \textit{Introduction to Redis Data Structures} (RU101), \textit{Redis Streams} (RU202), \textit{Redis Security} (RU330), by Redis University (Online)
+\\[0.42em]
+\years{2020}  
+\textbf{Introduction to Reverse Engineering with Ghidra} by Matthew Alt of Voidstar Security, 4-hours training, Hackaday-U (Online)
+\\[0.42em]
+\textbf{Autopsy Basics and Hands On} by Brian Carrier, 8-hours training, Basis Technology Corp. (Online)
+\\[0.42em]
+\textbf{Practical Ethical Hacking - The Complete Course} by Heath Adams, 24.5-hours training, TCM Security, Inc., Udemy (Online)
+\\[0.42em]
+\textbf{Python for Penetration Testers} by Cristi Zot, 2-hours training, Udemy (Online)
+\\[0.42em]
+\years{2018} 
+\textbf{1\textsuperscript{st} UPTEC School on the Future of Computing}, 1-week training, UPTEC – Science and Technology Park of University of Porto
+\\[0.42em]
+\years{2017} 
+\textbf{CyberTalk: Security - Business Enablement}, 4-hours training, Multicert – Electronic Certification Services, S.A.
+\\[0.42em]
+\textbf{Project Management}, 12-hours training, ERASMUS+ Mobility for teaching at \FEUP
+\\[0.42em]
+\years{2016} 
+\textbf{AWS Technical Essentials Online}, 1-day training, Amazon Web Services – Training and Certification
+\\[0.42em]
+\years{2015} 
+\textbf{Practical Workshop in Agile Project Management}, 4-hours training, Strongstep - Innovation in Software Quality
+\\[0.42em]
+\textbf{CERN Spring Campus}, 1-week training, CERN - European Organization for Nuclear Research
+\\[0.42em]
+\years{2014} 
+\textbf{M101JS: MongoDB for Node.js Developers}, 25-hours training, MongoDB University (Online)
+
+
+
+\section*{Prototypes}
+
+The prototypes are released under open-source licences, most of them being available through my Github profile:
+\href{https://github.com/jpdias/}{github.com/jpdias}.
+\\
+
+\years{2022---} 
+\textbf{Stateless Home Automation Dashboard Generation Tool}, 
+\href{https://github.com/BUILT-CoLAB/mqttdash}{github.com/BUILT-CoLAB/mqttdash}
+\newline
+A simple codegen tool for developing single-page dashboards using MQTT-over-Websockets. 
+\\[0.42em]
+\textbf{Software License Manager and Verification API}, 
+\href{https://github.com/BUILT-CoLAB/license-key-manager}{github.com/BUILT-CoLAB/license-key-manager}
+\newline
+A Flask-based (Python) platform to manage software licenses with an API for license verification.
+\\[0.42em]
+\years{2019---} 
+\textbf{Self-Healing Extensions for Node-RED}, 
+\href{https://github.com/jpdias/node-red-contrib-self-healing}{github.com/jpdias/node-red-contrib-self-healing}
+\newline
+A collection of self-healing nodes to the Node-RED development environment.
+\\[0.42em]
+\years{2016--2017} 
+\textbf{Botnet-Lab}, 
+\href{https://github.com/jpdias/botnet-lab}{github.com/jpdias/botnet-lab}
+\newline
+An IRC based tool for testing the capabilities of a botnet written in Python 2.7. 
+\\
+\years{2016} 
+\textbf{Portfolio-Photo}, 
+\href{https://github.com/jpdias/portfolio-photo}{github.com/jpdias/portfolio-photo}
+\newline
+An YAML and Jekyll (Ruby) dynamically generated photography portfolio using the Flickr API.
+\\[0.42em]
+\years{2015} 
+\textbf{Deploy Logger Service (Codename Malamute)}, 
+\href{https://github.com/ShiftForward/malamute}{github.com/ShiftForward/malamute}
+\newline
+Application and integration API built for documenting and record the release of new versions of projects (deploys) and its modules. Developed during the summer internship at ShiftForward.
+\\[0.42em]
+\years{2014--2015} 
+\textbf{Turing Machine}, 
+\href{https://github.com/jpdias/TuringMachine/}{github.com/jpdias/TuringMachine}
+\newline
+A web-based Turing Machine with a pre-defined language, parser, and interpretation capabilities.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{Pro-Bono \textit{\&} Other Activities}
+
+\subsection*{Academic}
+
+
+\years{2013--2015} 
+\textbf{Executive Committee Member (Secretary)}, IEEE University of Porto Student Branch
+\newline
+Organization of several technical workshops and other events including \emph{IEEE Day}, \emph{IEEEXtreme} and \emph{IEEEmadC}.
+
+
+\subsection*{Humanitarian}
+
+
+\years{2013--2015} 
+\textbf{Founder Member}, \emph{Luz da Vida} Youth Group
+\newline
+Organization of activities on behalf of the village community (Travanca, Amarante, Portugal).
+
+\subsection*{Hobbies}
+
+
+\years{2016--2017} 
+\textbf{Football Player}, Grupo Desportivo e Recreativo de Travanca 
+\newline
+F.A.D.A. Amateur League, Amarante, \Address{}
+\\[0.42em]
+\years{2008---} 
+\textbf{Amateur Photographer} --- Wildlife, Landscapes and Travel
+\newline
+- \textit{Winner of the quest \textit{Landscapes from Above}}, promoted by 500px, \href{https://web.500px.com/quests/1000000106/landscapes-from-above}{500px.com/quests/1000000106}, 2020
+\newline
+- \textit{One of the 50 best pictures of \#MySocialEurope photo competition - How should the Future of social Europe look like?}, promoted by the European Commission, 2019
+\newline
+- \textit{Finalist at the Norte Multimédia Contest - Photography Category}, promoted by the Norte Portugal Regional Coordination and Development Commission (CCDR-N), exposed at Trindade Metro Station (Porto), 2018
+\newline
+- \textit{Finalist at the PORTUGAL NUM ISQUEIRO BIC Contest}, promoted by the I Love My BIC initiative by BIC Portugal, 2018
+\newline
+- \textit{Exposition at Movimento d'Artes}, promoted by the Cooperativa Cultural Vinha das Artes, 2010
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Languages}
+
+\TablePad
+\begin{tabularx}{\textwidth}{@{}p{0.15\textwidth} p{0.85\textwidth}@{}}
+	Portuguese & Native                    
+	\\
+	English    & B Level (Self-Evaluation) 
+\end{tabularx}
+
+%\begin{center}
+%	\color{awesome} \Huge \adforn{17}
+%	\vspace{-0.5cm}
+%\end{center}
+
+\end{document}

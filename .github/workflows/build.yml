@@ -1,0 +1,37 @@
+name: Build CV
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Compile main.tex
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Build PDF
+        uses: xu-cheng/texlive-action@v3
+        with:
+          run: make pdf
+
+      - name: Check citations were resolved by biber
+        run: |
+          if grep -nE "could not be found in the bibliography|undefined citation|Please \\\\(re\\\\)?run Biber" build/main.log; then
+            echo "::error::unresolved bibliography entries in build/main.log"
+            exit 1
+          fi
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v6
+        with:
+          name: cv
+          path: build/main.pdf

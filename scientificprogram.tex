@@ -1,0 +1,282 @@
+\documentclass[11pt]{article}
+
+\usepackage{sectsty}
+\usepackage{graphicx}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\usepackage{adforn}
+
+% Configure the font style for sections
+\usepackage{xcolor}
+\definecolor{awesome}{HTML}{96281B}
+\definecolor{ieee}{HTML}{00629b}
+\definecolor{acm}{HTML}{84cdf1}
+\definecolor{springer}{HTML}{ee7d11}
+\definecolor{elsevier}{HTML}{ff6c00}
+\definecolor{wos}{HTML}{5e33bf}
+\definecolor{scopus}{HTML}{ff6c00}
+\definecolor{dblp}{HTML}{ffd700}
+\definecolor{crossref}{HTML}{ef3340}
+\definecolor{mdpi}{HTML}{3b5578}
+% badger badger badger
+
+% Control the font size
+\usepackage{anyfontsize}
+\usepackage[maxbibnames=99,maxcitenames=99]{biblatex}
+%\bibliographystyle{plain}
+\bibliography{reference-personal}
+
+\usepackage[most]{tcolorbox}
+
+
+\newtcbox{\badge}[1][awesome]{
+  on line, 
+  arc=0pt,
+  colback=#1!80!black,
+  colframe=#1!80!black,
+  fontupper=\scshape\small\color{white},
+  boxrule=1pt, 
+  boxsep=0pt,
+  left=1pt,
+  right=1pt,
+  top=1pt,
+  bottom=1pt
+}
+
+\newcommand{\wos}{\badge[wos]{WoS}}
+\newcommand{\scopus}{\badge[scopus]{Scopus}}
+\newcommand{\crossref}{\badge[crossref]{CrossRef}}
+\newcommand{\dblp}{\badge[dblp]{DBLP}}
+
+\newcommand{\ieee}{\badge[ieee]{IEEE}}
+\newcommand{\acm}{\badge[acm]{ACM}}
+\newcommand{\mdpi}{\badge[mdpi]{MDPI}}
+\newcommand{\springer}{\badge[springer]{Springer}}
+\newcommand{\elsevier}{\badge[elsevier]{Elsevier}}
+% Set the spacing for sections
+% HEADINGS
+\usepackage{sectsty} 
+\usepackage[normalem]{ulem} 
+
+\sectionfont{\color{awesome}\mdseries\upshape\Large}
+\subsectionfont{\color{awesome}\mdseries\scshape\normalsize} 
+\subsubsectionfont{\color{awesome}\mdseries\upshape\large} 
+
+
+% Set the spacing for sections
+\usepackage{titlesec}
+\titlespacing{\section}{0pt}{0cm}{0.5cm}
+%\titlespacing{\subsection}{0pt}{0.3cm}{0.3cm}
+
+\newcommand{\FEUP}{Faculty of Engineering, University of Porto}
+
+% Identifying information
+\newcommand{\Title}{Scientific-Pedagogic Project}
+\newcommand{\FirstName}{João Pedro}
+\newcommand{\LastName}{Dias}
+\newcommand{\Initials}{J.P.}
+\newcommand{\MyName}{\FirstName\ \LastName}
+\newcommand{\Me}{\textbf{\LastName, \Initials}}  % For citations
+\newcommand{\Email}{jpmdias@fe.up.pt}
+\newcommand{\Website}{jpdias.me}
+\newcommand{\ORCID}{0000-0001-9066-6436}
+\newcommand{\Affiliation}{
+    \adforn{10} BUILT CoLAB\\
+    \adforn{10} Department of Informatics Engineering
+    \\
+    \FEUP
+}
+\newcommand{\Address}{
+    \small{Porto, Portugal}
+}
+
+% Set fancy headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\chead{
+    \fontsize{8pt}{10pt}\selectfont
+    \MyName
+    \hspace{0.2cm} ~~~·~~~ \hspace{0.2cm}
+    \Title
+    \hspace{0.2cm} ~~~·~~~ \hspace{0.2cm}
+    \monthyear\today
+}
+\rhead{}
+\usepackage{lastpage}
+\cfoot{\fontsize{8pt}{0}\selectfont Page \thepage\ of 7}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancypagestyle{firststyle}
+{
+   \fancyhf{}
+   \cfoot{\fontsize{8pt}{0}\selectfont Page \thepage\ of 7}
+}
+
+% Define command to insert month name and year as date
+\usepackage{datetime}
+\newdateformat{monthyear}{\monthname[\THEMONTH], \THEYEAR}
+
+
+
+\title{Scientific-Pedagogic Project}
+\author{João Pedro Dias}
+\date{\today}
+
+\begin{document}
+\maketitle	
+\thispagestyle{empty}
+\pagebreak
+
+% Optional TOC
+% \tableofcontents
+% \pagebreak
+
+%--Paper--
+
+\section{Introduction}
+
+Information systems play an increasingly critical role in our society, with organizations relying on them to support key business processes and decision-making. However, with the rapid evolution of technology, new challenges are emerging that threaten the security and privacy of these systems. For example, social networks are creating new privacy concerns, with personal data being harvested and used for advertising and other purposes. These concerns have been highlighted by several high-profile incidents, such as the Cambridge Analytica scandal, where millions of Facebook users' data was harvested without their consent and used for political advertising. In response to these concerns, governments around the world have introduced new data protection laws, such as the European Union's General Data Protection Regulation (GDPR), which requires organizations to protect the privacy of personal data and to report data breaches.
+
+Data ownership is becoming more complex, with questions arising about who owns data and how it can be used. For example, the use of wearable devices and other Internet of Things (IoT) devices is generating vast amounts of data that can be used to improve healthcare, transportation, and other areas. However, there are questions about who owns this data and who should be able to access it. Similarly, the use of big data and analytics are enabling organizations to gain valuable insights into consumer behaviour, but there are concerns about how this data is being used and who is benefiting from it.
+Threat actors, such as nation-states, are increasingly using cyberattacks to steal sensitive data or disrupt critical infrastructure. For example, in 2020, the Russian state-sponsored hacking group Cozy Bear was accused of hacking into several US government agencies and tech companies. Such attacks can have far-reaching consequences, including the theft of sensitive data and the disruption of critical infrastructure.
+
+As a result of these challenges, there is a growing need for professionals who possess both the technical skills and the knowledge to ensure the effective management and security of information systems. This includes expertise in areas such as cybersecurity, data privacy, and data management. As a candidate for this university professor position, I believe that I have the necessary skills and experience to help students develop these skills, and to contribute to research and teaching in the field of information systems, specially in what regards the privacy and security questions that arise when dealing with large amounts of data, including Personal Identifiable Information (PII).\\\\
+
+\section{Scientific Activity Development Program}
+
+As a researcher with interest for the field of information systems, my primary focus is in ensuring the security and integrity of computer systems and the data that they contain. To this end, I propose a research program that focuses on the development and application of cutting-edge techniques in blockchain, differential privacy, and other related areas to address pressing issues in the field, including compliance with existing norms such as GDPR.
+
+One area of research that I have focused in the past is the application of blockchain technology to ensure the integrity and security of access control policies for e-Health data. Current centralized systems are vulnerable to both system and network faults and do not ensure the integrity of policies throughout their lifecycle. By using a blockchain as a store system for access policies, we can maintain a record of all permission requests while ensuring integrity, auditability, and authenticity. These concepts, even without using blockchain technology (e.g. data immutability), are crucial to safekeep the large amounts of information created from different systems.
+
+The development of new techniques for ensuring the privacy and security of data in the era of big data and the Internet of Things is of utmost relevance and importance. One such technique is differential privacy, which involves adding random noise to data to protect the privacy of individuals. We could investigate new ways of applying differential privacy to various data types, including location data and medical records, and develop practical tools for protecting data privacy in a range of contexts.
+
+Furthermore, we can explore the use of blockchain technology to provide a privacy-preserving data sharing mechanism. By developing a blockchain-based protocol that enables data sharing without exposing sensitive information, we can address the pressing need for effective and secure data sharing mechanisms in a range of contexts, including healthcare and finance.
+
+These research endeavours will be supported by my own work and also by the supervision of a team of undergraduate and graduate students in pursuing their master's and doctoral theses, providing them with the necessary guidance and support to develop high-quality research in the field. Moreover, I will conduct outreach activities to engage with the wider community and disseminate the results of our research through scientific publications, conference presentations, and workshops.
+
+Through this research program, I aim to make significant contributions to the fields of information systems, blockchain, differential privacy, and data security, and to train the next generation of researchers and practitioners in these critical areas. 
+
+From an action plan for the next five years we can consider the following action points:
+
+\begin{itemize}
+\item Develop and teach a new course on data privacy, focusing on GDPR and other relevant regulations;
+\item Establish a research group to investigate security and privacy challenges in information systems, with a focus on emerging technologies such as IoT, blockchain, and AI;
+\item Publish at least one research paper per year in top-tier conferences and journals in the field of information systems, with a focus on security, privacy, and data management;
+\item Secure funding from European research grants to support research activities in the field of information systems security and privacy;
+\item Supervise at least one master's thesis per year on topics related to information systems security and privacy. Supervise at least one doctoral student on the topic during the 5-year window;
+\item Organize outreach activities, such as workshops and seminars, to educate the public and private sectors on the importance of information systems security and privacy;
+\item Collaborate with industry partners to identify and address real-world security and privacy challenges in information systems;
+\item Establish a reputation as a leading expert in information systems security and privacy, and contribute to the development of standards and best practices in the field.
+\end{itemize}
+
+\section{Pedagogic Activity Development Program}
+
+Data privacy has become a pressing concern in the modern digital age, with numerous high-profile data breaches and scandals highlighting the need for stricter regulations and safeguards. The General Data Protection Regulation (GDPR) is a comprehensive EU data privacy law that sets a new standard for how personal data must be collected, processed, and stored. The GDPR applies not only to organizations based within the EU, but also to any organization that processes the personal data of EU citizens, making it a globally-relevant issue.
+
+As a result, there is a growing need for professionals who understand the principles of data privacy and are capable of ensuring GDPR compliance within their organizations. This course is designed to equip students with the knowledge and skills needed to navigate the complexities of data privacy and GDPR compliance, preparing them for careers in a wide range of industries.
+
+\subsection{Learning Outcomes}
+
+By the end of this course, students will:
+
+    \begin{itemize}
+        \item Understand the key principles of data privacy and GDPR compliance, including data minimization, purpose limitation, and consent management.
+        \item  Be familiar with the various categories of personal data and the different legal bases for processing such data under the GDPR.
+        \item     Be able to identify and assess privacy risks within organizations and develop appropriate strategies for mitigating those risks.
+        \item     Be able to design and implement GDPR-compliant data protection policies and procedures within organizations.
+        \item     Understand the role of data protection officers (DPOs) and be able to fulfill the responsibilities of a DPO.
+        \item    Be familiar with the GDPR's requirements for data subjects' rights, including the right to access, rectification, erasure, and portability.
+        \item     Understand the GDPR's notification and reporting requirements for data breaches and be able to develop and implement incident response plans.
+        \item     Be able to conduct GDPR compliance audits and develop remediation plans to address any identified non-compliance issues.
+        \item 
+    Be able to apply the principles of differential privacy to ensure privacy protection in data analysis and machine learning.
+    \end{itemize}
+
+
+\subsection{Curricular Unit Program}
+
+The curricular unit hereby described is intended for master students that wish to deepen their knowledge in the thematic of privacy, security, data management and governance. For this reason, it should be integrated as an optional curricular unit as part of their master degree.
+
+\begin{enumerate}
+    \item Course Overview and Introduction
+    \begin{itemize}
+        \item Introduction to the course and its objectives
+        \item Overview of data privacy laws and regulations, with a focus on GDPR
+        \item Discussion of the importance of data privacy in today's digital landscape
+    \end{itemize}
+    \item Key Concepts in Data Privacy
+    \begin{itemize}
+        \item Definition of key concepts in data privacy, including personal data, data controller, data processor, and data subject
+        \item Overview of data protection principles, such as purpose limitation, data minimization, and transparency
+    \end{itemize}
+    \item GDPR Compliance
+    \begin{itemize}
+        \item Overview of the GDPR and its scope
+        \item Discussion of the rights of data subjects, including the right to be forgotten and the right to data portability
+        \item Explanation of the obligations of data controllers and processors under the GDPR, such as data protection impact assessments, notification of data breaches, and appointment of a data protection officer
+        \item Discussion of the consequences of non-compliance with the GDPR, including fines and reputational damage
+    \end{itemize}
+    \item Implementing Data Privacy in Information Systems
+    \begin{itemize}
+        \item Overview of the challenges associated with implementing data privacy in information systems
+        \item Explanation of techniques for data anonymization and pseudonymization
+        \item Overview of best practices for securing personal data, such as encryption, access controls, and auditing
+    \end{itemize}
+    \item Emerging Trends in Data Privacy
+    \begin{itemize}
+        \item Discussion of emerging trends in data privacy, such as the impact of artificial intelligence and the use of blockchain technology for data privacy
+        \item Overview of other data privacy regulations, such as the California Consumer Privacy Act (CCPA)
+    \end{itemize}
+\item Case Studies and Practical Exercises
+\begin{itemize}
+    \item Review of real-world case studies of data privacy violations and GDPR compliance
+    \item Practical exercises to reinforce key concepts and apply data privacy principles to real-world scenarios
+\end{itemize}
+\item Conclusion and Future Directions
+\begin{itemize}
+    \item Summary of the key takeaways from the course
+    \item Discussion of future directions in data privacy, such as the impact of emerging technologies and the evolution of data privacy regulations
+\end{itemize}
+    
+\end{enumerate}
+
+\subsection{Evaluation}
+
+The evaluation will have two components:
+\begin{itemize}
+    \item A two or three students group project that implement a simple information system that has to deal with Personal Identifiable Information (PII) and ensure that such data is only available in accordance to the GPDR regulation. The complexity of project could be increase by making the different projects interchange data while ensuring privacy and security.
+    \item A final exam that ensures that the students have understood the main theoretical concepts, including current legislation and exiting technologies that ensure data management and privacy requirements.
+\end{itemize}
+
+Such evaluation can empower the students to develop knowledge on their own while ensuring that the key concepts were well understood. \\\\
+
+\section{University Extension Activity Development Program}
+
+The aim of the University Extension Activity Development Program is to promote a culture of privacy-awareness and best practices in the wider community. By engaging with industry partners and government agencies, the program seeks to advance the field of privacy research and influence policy decisions that impact the privacy of individuals. Through talks and workshops, the program aims to empower individuals with the knowledge and skills needed to protect their privacy in today's digital world. More concretely, the efforts will focus on:
+\begin{itemize}
+    \item Talks and Workshops: Develop a series of talks and workshops aimed at educating the general public on the importance of privacy in today's digital age. Topics could include the basics of data privacy, the impact of social media on privacy, and the benefits of adopting privacy-first technologies. These talks and workshops could be held on-campus or in collaboration with local communities, student groups or other organizations.
+    \item  Industry Partnerships: Forge partnerships with companies and organizations that prioritize user privacy, such as those that offer privacy-centric technologies or services. These partnerships could involve guest lectures, workshops, or collaborative research projects that aim to advance the understanding and practice of privacy in the industry.
+    \item  Government Contacts: Establish relationships with local and national government agencies that are responsible for privacy regulations and policies. This could involve inviting government officials to speak on-campus or collaborating on research projects that address privacy-related issues. It could also involve advocating for policies that promote strong privacy protections for individuals. In Portugal, agencies such as the CNCS (Centro Nacional de Cibersegurança) and the CNPD (Comissão Nacional de Proteção de Dados) are key contacts in this perspective.
+\end{itemize}
+
+Overall, this development program has the potential to create a significant impact in promoting privacy awareness, advancing the understanding and practice of privacy in the industry, and advocating for strong privacy protections for individuals in the era of large-scale information systems.\\\\
+
+\section{Conclusions}
+
+The field of information systems is constantly evolving and presents many opportunities for research and innovation, particularly in areas such as information security and privacy, specially in the age of large language models such as ChatGPT that train on tremendous amounts of information that such systems make available.
+
+Academic research in these areas can have a significant impact on society, by addressing real-world problems and informing policy decisions. This research can also contribute to the development of new technologies and business models.
+
+In order to have a meaningful impact, research in information systems should be accompanied by outreach activities, such as talks, workshops, and partnerships with industry and government. These activities can help raise awareness about the importance of privacy and information security, and can also facilitate the transfer of knowledge and expertise from academia to the wider community.
+
+As a candidate for a professor position in the field of information systems, it is important to have a strong background in both theoretical and practical aspects of the field, and to be able to communicate complex ideas effectively to a variety of audiences. It is also important to be able to collaborate effectively with colleagues, industry partners, and government agencies in order to maximize the impact of research and outreach activities. Finally, it is important to be committed to ongoing learning and professional development in order to stay abreast of new developments in the field.
+
+\end{document}

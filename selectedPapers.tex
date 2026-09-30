@@ -1,0 +1,199 @@
+\documentclass[11pt]{article}
+
+\usepackage{sectsty}
+\usepackage{graphicx}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\usepackage{adforn}
+
+% Configure the font style for sections
+\usepackage{xcolor}
+\definecolor{awesome}{HTML}{96281B}
+\definecolor{ieee}{HTML}{00629b}
+\definecolor{acm}{HTML}{84cdf1}
+\definecolor{springer}{HTML}{ee7d11}
+\definecolor{elsevier}{HTML}{ff6c00}
+\definecolor{wos}{HTML}{5e33bf}
+\definecolor{scopus}{HTML}{ff6c00}
+\definecolor{dblp}{HTML}{ffd700}
+\definecolor{crossref}{HTML}{ef3340}
+\definecolor{mdpi}{HTML}{3b5578}
+% badger badger badger
+
+% Control the font size
+\usepackage{anyfontsize}
+\usepackage[maxbibnames=99,maxcitenames=99]{biblatex}
+%\bibliographystyle{plain}
+\bibliography{reference-personal}
+
+\usepackage[most]{tcolorbox}
+
+
+\newtcbox{\badge}[1][awesome]{
+  on line, 
+  arc=0pt,
+  colback=#1!80!black,
+  colframe=#1!80!black,
+  fontupper=\scshape\small\color{white},
+  boxrule=1pt, 
+  boxsep=0pt,
+  left=1pt,
+  right=1pt,
+  top=1pt,
+  bottom=1pt
+}
+
+\newcommand{\wos}{\badge[wos]{WoS}}
+\newcommand{\scopus}{\badge[scopus]{Scopus}}
+\newcommand{\crossref}{\badge[crossref]{CrossRef}}
+\newcommand{\dblp}{\badge[dblp]{DBLP}}
+
+\newcommand{\ieee}{\badge[ieee]{IEEE}}
+\newcommand{\acm}{\badge[acm]{ACM}}
+\newcommand{\mdpi}{\badge[mdpi]{MDPI}}
+\newcommand{\springer}{\badge[springer]{Springer}}
+\newcommand{\elsevier}{\badge[elsevier]{Elsevier}}
+% Set the spacing for sections
+% HEADINGS
+\usepackage{sectsty} 
+\usepackage[normalem]{ulem} 
+
+\sectionfont{\color{awesome}\mdseries\upshape\Large}
+\subsectionfont{\color{awesome}\mdseries\scshape\normalsize} 
+\subsubsectionfont{\color{awesome}\mdseries\upshape\large} 
+
+
+% Set the spacing for sections
+\usepackage{titlesec}
+\titlespacing{\section}{0pt}{0cm}{0.5cm}
+%\titlespacing{\subsection}{0pt}{0.3cm}{0.3cm}
+
+\newcommand{\FEUP}{Faculty of Engineering, University of Porto}
+
+% Identifying information
+\newcommand{\Title}{Selected Papers}
+\newcommand{\FirstName}{João Pedro}
+\newcommand{\LastName}{Dias}
+\newcommand{\Initials}{J.P.}
+\newcommand{\MyName}{\FirstName\ \LastName}
+\newcommand{\Me}{\textbf{\LastName, \Initials}}  % For citations
+\newcommand{\Email}{jpmdias@fe.up.pt}
+\newcommand{\Website}{jpdias.me}
+\newcommand{\ORCID}{0000-0001-9066-6436}
+\newcommand{\Affiliation}{
+    \adforn{10} BUILT CoLAB\\
+    \adforn{10} Department of Informatics Engineering
+    \\
+    \FEUP
+}
+\newcommand{\Address}{
+    \small{Porto, Portugal}
+}
+
+% Set fancy headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\chead{
+    \fontsize{8pt}{10pt}\selectfont
+    \MyName
+    \hspace{0.2cm} ~~~·~~~ \hspace{0.2cm}
+    \Title
+    \hspace{0.2cm} ~~~·~~~ \hspace{0.2cm}
+    \monthyear\today
+}
+\rhead{}
+\usepackage{lastpage}
+\cfoot{\fontsize{8pt}{0}\selectfont Page \thepage\ of 4}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancypagestyle{firststyle}
+{
+   \fancyhf{}
+   \cfoot{\fontsize{8pt}{0}\selectfont Page \thepage\ of 4}
+}
+
+% Define command to insert month name and year as date
+\usepackage{datetime}
+\newdateformat{monthyear}{\monthname[\THEMONTH], \THEYEAR}
+
+
+
+\title{Selected Papers}
+\author{João Pedro Dias}
+\date{\today}
+
+\begin{document}
+\maketitle	
+\thispagestyle{empty}
+\pagebreak
+
+% Optional TOC
+% \tableofcontents
+% \pagebreak
+
+%--Paper--
+
+\section{Most Representative Articles in the last 5 Years}
+%mais representativos da atividade de investigação por si desenvolvida
+\begin{itemize}
+    \item \fullcite{Sosym2022}
+
+    The article proposes a visual approach for container orchestration, which reduces errors and improves efficiency in managing complex systems. This low-code solution could benefit organizations by enabling better collaboration between developers and operators, while reducing error proneness. Empirical evaluation of the tool shows promising results, suggesting that it could have a significant impact on the field of container orchestration.
+    
+	\item \fullcite{DiasIoT2022}
+ 
+     The complexity of IoT systems and devices is a barrier to a healthy ecosystem, mostly due to fragmentation and heterogeneity. The field has yet to adopt engineering practices used in other large-scale systems, resulting in sub-optimal solutions. The paper surveys the current state of the art in IoT system design and construction from a software engineering perspective, while also considering hardware concerns, revealing current trends and research directions for the next years.
+    
+	\item \fullcite{AccessReis2021}
+ 
+     Cloud computing and IaC, supported by Docker, have transformed software development and deployment. This study examines Dockerfiles and docker-compose.yml files and identifies time-consuming activities and common problem-solving approaches used by developers. Results show a need for better ancillary tools for developers, particularly beginners, in the development of Dockerfiles and Docker Compose files.
+
+
+	\item \fullcite{lago2020journal}
+
+     Smart home IoT systems are becoming increasingly complex, creating challenges for managing interactions and identifying causes of issues. Low-code development solutions have emerged to address these challenges, but they sacrifice ease of use and accessibility. The paper presents a conversational interface called Jarvis that allows users to manage IoT systems through natural language and time-based rules, with a feasibility experiment showing its intuitive usability for common end-users, showcasing the relevance of such approaches.
+     
+    \item \fullcite{europlop2020}
+    
+    IoT systems are complex, making error detection and recovery crucial. Patterns for self-healing IoT systems can improve reliability by detecting errors and maintaining system health. The presented paper details such patterns for the first time in the literature, drawing inspiration from other research areas and can be used to enhance the operation of IoT systems.
+    
+\end{itemize}
+	
+
+\section{Most Representative Articles}
+
+\begin{itemize}
+\item \fullcite{icse2022}
+
+    IoT systems require fault-tolerance mechanisms due to their increasing use in mission-critical scenarios. This work presents a fault-injection add-on to a commonly used publish/subscribe broker to exercise fault-tolerance mechanisms. Fault-injection can help enhance in-place fault-tolerance techniques by detecting when these mechanisms are not performing nominally.
+    
+\item \fullcite{DannyUserStudy21}
+
+    IoT has enabled automation of everyday tasks and led to the development of end-user solutions for configuring and automating IoT systems. However there was a lack of systematic research on home automation rules, user intents, and the complexity of the rules. A survey of twenty participants revealed 177 scenarios and seven different interaction categories representing common smart home interactions, dataset which can be used to sustain the development of new ways of interaction in smart space settings.
+
+\item \fullcite{DiogoTorres2020}
+
+    The growth of IoT systems has led to a shortage of human resources with the expertise to design, develop and maintain them. Node-RED, a commonly used visual programming solution for IoT development, has limitations such as inadequate debugging mechanisms. Enhancements to Node-RED can improve the user's system development, debugging, and understanding tasks, reducing development time and the number of failed attempts to deploy the system, thus showcasing the relevance of real-time feedback when developing with low-code solutions.
+    
+\item \fullcite{Aguiar2019}
+
+Live Programming concept involves always accessible evaluation and instant feedback to improve coding activities. This work introduces the concept of Live Software Development (LiveSD) which proposes the use of liveness beyond coding to make software more understandable, visualizable, and easier to evolve. Research is needed to identify the most significant gaps in liveness in software development, which abstractions are better for developers, and what tools are necessary to support it.
+
+
+
+\item \fullcite{jias18}
+
+Access control is critical for system security, particularly in managing eHealth data and resources. Current systems for sharing access policies between facilities are vulnerable to faults and do not guarantee policy lifecycle integrity. Blockchain-based solutions can provide integrity, auditability, and authenticity to access control in eHealth by storing operations as transactions.
+
+\end{itemize}
+%--/Paper--
+
+\end{document}
