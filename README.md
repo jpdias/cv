@@ -13,7 +13,7 @@ make pdf      # compiles into build/main.pdf
 make clean
 ```
 
-`make pdf MAIN=selectedPapers` builds another document. `latexmk` runs `biber`
+`make pdf MAIN=other` builds a different root document. `latexmk` runs `biber`
 automatically for the `biblatex` entries, so no separate bibliography step is
 needed.
 
@@ -46,10 +46,11 @@ accordingly.
 
 | File | Purpose |
 | --- | --- |
-| `main.tex` | The CV; the only document CI builds. |
-| `reference-personal.bib` | Bibliography shared by the documents. |
-| `selectedPapers.tex`, `scientificprogram.tex`, `motivation.tex` | Separate documents, build them by hand. |
+| `main.tex` | The CV, the only document in the repository. |
+| `reference-personal.bib` | Bibliography cited by `main.tex`. |
 | `Makefile` | Local build entry point, mirroring what CI runs. |
 
-Earlier drafts of the CV (`main-academic.tex`, `main-old.tex`, `bckp.tex`) were
-removed; they remain in the git history if you ever need them back.
+Earlier drafts of the CV (`main-academic.tex`, `main-old.tex`, `bckp.tex`) and
+the standalone `selectedPapers.tex`, `scientificprogram.tex` and
+`motivation.tex` documents were removed; they remain in the git history if you
+ever need them back.
