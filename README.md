@@ -48,6 +48,8 @@ accordingly.
 | --- | --- |
 | `main.tex` | The CV; the only document CI builds. |
 | `reference-personal.bib` | Bibliography shared by the documents. |
-| `main-academic.tex`, `main-old.tex`, `bckp.tex` | Older variants, kept for reference and not built by CI. |
 | `selectedPapers.tex`, `scientificprogram.tex`, `motivation.tex` | Separate documents, build them by hand. |
 | `Makefile` | Local build entry point, mirroring what CI runs. |
+
+Earlier drafts of the CV (`main-academic.tex`, `main-old.tex`, `bckp.tex`) were
+removed; they remain in the git history if you ever need them back.
